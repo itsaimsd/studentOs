@@ -1,0 +1,88 @@
+<div class="selectClass">
+  <div
+    class="class-chip"
+    [class.active]="selectedClass === 'all'"
+    (click)="onFilteredClass('all')"
+  >
+    All
+  </div>
+  <div
+    class="class-chip"
+    [class.active]="selectedClass === '10'"
+    (click)="onFilteredClass('10')"
+  >
+    Class 10
+  </div>
+  <div
+    class="class-chip"
+    [class.active]="selectedClass === '8'"
+    (click)="onFilteredClass('8')"
+  >
+    Class 8
+  </div>
+</div>
+
+<div class="container">
+  @for (student of filteredStudents; track student.id) {
+    <div class="class-card" (click)="onStudentDetails(student.id)">
+      <div class="lable-name status-healthscore">
+        @if (student.status == "active") {
+          <span
+            class="lable-value"
+            style="
+              background-color: #29ae43;
+              padding: 0em 0.3em 0em 0.3em;
+              color: #fff8f8;
+              border-radius: 1.4em;
+            "
+          >
+            {{ student.status }}
+          </span>
+        } @else if (student.status == "watch") {
+          <span
+            class="lable-value"
+            style="
+              background-color: #ff9800;
+              padding: 0em 0.3em 0em 0.3em;
+              color: #fff8f8;
+              border-radius: 1.4em;
+            "
+          >
+            {{ student.status }}
+          </span>
+        } @else {
+          <span
+            class="lable-value"
+            style="
+              background-color: rgb(237, 79, 76);
+              color: #fff8f8;
+              padding: 0em 0.3em 0em 0.3em;
+              border-radius: 1.4em;
+            "
+          >
+            {{ student.status }}
+          </span>
+        }
+        <span>{{ " " }}</span>
+        <span class="lable-value"> {{ student.healthScore }}</span>
+      </div>
+
+      <div class="information-allign">
+        <div class="lable-name">Name :</div>
+        <div class="lable-value">{{ student.name }}</div>
+      </div>
+      <div class="information-allign">
+        <div class="lable-name">Class:</div>
+        <div class="lable-value">
+          {{ student.class }} - {{ student.section }}
+        </div>
+      </div>
+      <div class="information-allign">
+        <div class="lable-name">Attendance:</div>
+        <div class="lable-value">
+          {{ student.attendance }}% {{ student.rollNo }}
+        </div>
+      </div>
+    </div>
+  }
+</div>
