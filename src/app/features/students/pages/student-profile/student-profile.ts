@@ -10,12 +10,13 @@ import { StudentDetails } from '../../../../shared/models/student-detail.model';
   styleUrl: './student-profile.scss',
 })
 export class StudentProfile implements OnInit {
-  studentDetails : StudentDetails[]=[];
+  studentDetails: StudentDetails | null = null;
 
-  route = inject(ActivatedRoute)
-  studentService = inject(StudentService)
+  route = inject(ActivatedRoute);
+  studentService = inject(StudentService);
 
   ngOnInit(): void {
-    const id = this.route.snapshot.params['id']
+    const id = this.route.snapshot.params['id'];
+    this.studentDetails = this.studentService.getStudentById(id) ?? null;
   }
 }

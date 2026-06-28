@@ -170,5 +170,5 @@ export const DUMMY_STUDENT_DETAILS: StudentDetails[] = [
         title: 'Fee Payment Completed',
       },
     ],
-  },
+  }
 ];
